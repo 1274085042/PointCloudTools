@@ -12,13 +12,13 @@ int main()
     int voxels=0;
 
 
-    std::vector<boost::filesystem::path> folderpaths(boost::filesystem::directory_iterator{"../../data"}, boost::filesystem::directory_iterator{});
-    for(auto folp=folderpaths.begin();folp!=folderpaths.end();folp++)
+    std::vector<boost::filesystem::path> folderpaths(boost::filesystem::directory_iterator{"../data"}, boost::filesystem::directory_iterator{});
+    for(auto folp=folderpaths.begin();folp!=folderpaths.end();folp++)       //遍历第一级目录
     {
         std::cout<<"cd: "<<(*folp).string()<<std::endl;
         std::vector<boost::filesystem::path> filepaths(boost::filesystem::directory_iterator{(*folp).string()}, boost::filesystem::directory_iterator{});
 
-        for(auto filep=filepaths.begin();filep!=filepaths.end();filep++)
+        for(auto filep=filepaths.begin();filep!=filepaths.end();filep++)    //遍历第二级目录
         {   
             //std::cout<<rangex<<std::endl;
             
