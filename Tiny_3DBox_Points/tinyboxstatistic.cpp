@@ -46,6 +46,17 @@ int main()
                     pass.setFilterLimits(rangex,rangex+0.05);
                     pass.filter(*filteredXCloud);
 
+                    //TODO:
+                    /*
+                    if(filteredCloud->size()>0):
+                    {
+                    继续
+                    }
+                    else
+                    {
+                    开始下一次循环
+                    }
+                    */
                     double rangey=0;
                     while ((rangey+0.05)<=168)
                     {
