@@ -26,11 +26,11 @@ int main(int argc, char **argv)
     pcl::PointXYZ c;
     //Fill in the cloud data
     pcl::PCDReader reader;
-    reader.read("../data/i2.pcd",*cloud_blob);
+    reader.read("../data/20201028_162415_018150.pcd",*cloud_blob);
 
     auto start=std::chrono::system_clock::now();
 
-    //pcl::PCDWriter writer;
+    pcl::PCDWriter writer;
     
     //Convert to the templated PointCloud
     pcl::fromPCLPointCloud2(*cloud_blob,*cloud_filtered);
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     seg.setModelType(pcl::SACMODEL_PLANE);
     seg.setMethodType(pcl::SAC_RANSAC);
     seg.setMaxIterations(1000);
-    seg.setDistanceThreshold(0.2);
+    seg.setDistanceThreshold(0.05);
 
     //Create the filtering object
     pcl:: ExtractIndices<pcl::PointXYZ> extract;
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
         std::cout<<"PointCloud representing the planar component: "<<cloud_p->width*cloud_p->height<<" data points."<<std::endl;
 
         std::stringstream ss;
-        ss<<"i2_"<<i<<".pcd";
+        ss<<"ground_"<<i<<".pcd";
         writer.write<pcl::PointXYZ> (ss.str(),*cloud_p,false);
 
         //Create the filtering object
